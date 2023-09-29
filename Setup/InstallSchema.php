@@ -12,6 +12,7 @@ class InstallSchema implements InstallSchemaInterface
         $installer = $setup;
 
         $installer->startSetup();
+
         //Brands
         $table_brand = $installer->getConnection()
             ->newTable($installer->getTable('vehicle_brand'))
@@ -34,7 +35,7 @@ class InstallSchema implements InstallSchemaInterface
                     [], 
                     'Brand'
                 )
-                ->setComment('Brand');
+            ->setComment('Brand');
         $installer->getConnection()->createTable($table_brand);
         //Models
         $table_model = $installer->getConnection()
@@ -132,7 +133,6 @@ class InstallSchema implements InstallSchemaInterface
             \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE // cuando se elimine o actualice la tabla origen, se elimina o actualiza la tabla destino
         );
         
-
         $installer->endSetup();
 
     }
