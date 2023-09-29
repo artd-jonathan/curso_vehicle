@@ -29,16 +29,7 @@ class VehicleBrand extends AbstractModel implements IdentityInterface, VehicleBr
         $this->_init('Curso\Vehicle\Model\ResourceModel\VehicleBrand');
     }
 
-    /**
-     * Initialize resource model
-     *
-     * @return void
-     */
-    protected function _construct()
-    {
-        $this->_init('Curso\Vehicle\Model\ResourceModel\VehicleVehicle');
-    }
-
+    
     /**
      * Return a unique id for the model.
      *

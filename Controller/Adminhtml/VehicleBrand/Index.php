@@ -12,15 +12,19 @@ class Index extends \Magento\Backend\App\Action
      */
     protected $_pageFactory;
 
+    protected $_vehicleBrandFactory;
+
     /**
      * @param \Magento\Backend\App\Action\Context $context
      */
     public function __construct(
        \Magento\Backend\App\Action\Context $context,
-       \Magento\Framework\View\Result\PageFactory $pageFactory
+       \Magento\Framework\View\Result\PageFactory $pageFactory,
+       \Curso\Vehicle\Model\VehicleBrandFactory $vehicleBrandFactory
     )
     {
         $this->_pageFactory = $pageFactory;
+        $this->_vehicleBrandFactory = $vehicleBrandFactory;
         return parent::__construct($context);
     }
 
@@ -31,13 +35,18 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-         /** @var \Magento\Framework\View\Result\Page $resultPage */
-         $resultPage = $this->_pageFactory->create();
-         $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
-         $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
-         $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
+        $vehicleBrands = $this->_vehicleBrandFactory->create();
+		$vehicleBrandsCollection = $vehicleBrands->getCollection();
+		
+		echo '<pre>';print_r($vehicleBrandsCollection->getData());
 
-         return $resultPage;
+        // /** @var \Magento\Framework\View\Result\Page $resultPage */
+        // $resultPage = $this->_pageFactory->create();
+        // $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
+        // $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
+        // $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
+
+        // return $resultPage;
     }
 
 }
