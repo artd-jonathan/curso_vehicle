@@ -5,7 +5,7 @@ class Index extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Curso_Vehicle::brand/index';
 
-    const PAGE_TITLE = 'Page Title';
+    const PAGE_TITLE = 'Vehicle brands';
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -35,18 +35,13 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        $vehicleBrands = $this->_vehicleBrandFactory->create();
-		$vehicleBrandsCollection = $vehicleBrands->getCollection();
-		
-		echo '<pre>';print_r($vehicleBrandsCollection->getData());
+        /** @var \Magento\Framework\View\Result\Page $resultPage */
+        $resultPage = $this->_pageFactory->create();
+        $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
+        $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
+        $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
 
-        // /** @var \Magento\Framework\View\Result\Page $resultPage */
-        // $resultPage = $this->_pageFactory->create();
-        // $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
-        // $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
-        // $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
-
-        // return $resultPage;
+        return $resultPage;
     }
 
 }

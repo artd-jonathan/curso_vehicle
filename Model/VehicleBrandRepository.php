@@ -74,7 +74,15 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
     }
     public function deleteById($vehicleBrandId)
     {
-        return $this->delete($this->getById($vehicleBrandId));
+        try {
+            return $this->delete($this->getById($vehicleBrandId));
+        } catch (\Exception $exception) {
+            throw new CouldNotDeleteException(__(
+                'Could not delete the VehicleBrand',
+                $exception->getMessage()
+            ));
+        }
+        
     }
 
 }

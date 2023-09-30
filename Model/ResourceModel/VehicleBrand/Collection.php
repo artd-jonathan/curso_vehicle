@@ -8,7 +8,7 @@ class Collection extends AbstractCollection
     protected $_idFieldName = 'vehicle_brand_id';
 	protected $_eventPrefix = 'vehiclebrand_vehiclebrand_collection';
     protected $_eventObject = 'vehiclebrand_collection';
-	
+
 	/**
      * Define model & resource model
      */

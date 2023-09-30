@@ -5,7 +5,7 @@ class Index extends \Magento\Backend\App\Action
 {
     const ADMIN_RESOURCE = 'Curso_Vehicle::vehicleindex';
 
-    const PAGE_TITLE = 'Page Title';
+    const PAGE_TITLE = 'Vehicles';
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory

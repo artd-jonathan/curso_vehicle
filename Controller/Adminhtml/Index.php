@@ -1,11 +1,10 @@
 <?php
-namespace Curso\Vehicle\Controller\Adminhtml\VehicleModel;
+namespace Curso\Vehicle\Controller\Adminhtml;
 
 class Index extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Curso_Vehicle::model/index';
-
-    const PAGE_TITLE = 'Vehicle models';
+    protected $_publicActions = ['index'];
+    const PAGE_TITLE = 'Page Title';
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -40,4 +39,5 @@ class Index extends \Magento\Backend\App\Action
          return $resultPage;
     }
 
+    
 }
