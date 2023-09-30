@@ -11,12 +11,16 @@ class MassDelete extends \Magento\Backend\App\Action
     const ADMIN_RESOURCE = 'Curso_Vehicle::model/massdelete';
 
     const PAGE_TITLE = 'Page Title';
+
     protected $_filter;
+
     protected $_collectionFactory;
+
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $_pageFactory;
+
     /**
      * @param \Magento\Backend\App\Action\Context $context
      */
@@ -30,6 +34,7 @@ class MassDelete extends \Magento\Backend\App\Action
         $this->_collectionFactory = $collectionFactory;
         return parent::__construct($context);
     }
+
     /**
      * Index action
      *
@@ -46,5 +51,4 @@ class MassDelete extends \Magento\Backend\App\Action
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         return $resultRedirect->setPath('*/*/');
     }
-
 }

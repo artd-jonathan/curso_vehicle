@@ -3,24 +3,25 @@ namespace Curso\Vehicle\Controller\Adminhtml\VehicleModel;
 
 class Index extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Curso_Vehicle::model/index';
-
-    const PAGE_TITLE = 'Vehicle models';
-
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $_pageFactory;
+
+    protected $_vehicleModelFactory;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
      */
     public function __construct(
        \Magento\Backend\App\Action\Context $context,
-       \Magento\Framework\View\Result\PageFactory $pageFactory
+       \Magento\Framework\View\Result\PageFactory $pageFactory,
+       \Curso\Vehicle\Model\VehicleModelFactory $vehicleModelFactory
     )
     {
+        
         $this->_pageFactory = $pageFactory;
+        $this->_vehicleModelFactory = $vehicleModelFactory;
         return parent::__construct($context);
     }
 
@@ -31,13 +32,11 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-         /** @var \Magento\Framework\View\Result\Page $resultPage */
-         $resultPage = $this->_pageFactory->create();
-         $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
-         $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
-         $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
+        /** @var \Magento\Framework\View\Result\Page $resultPage */
+        $resultPage = $this->_pageFactory->create();
+        $resultPage->getConfig()->getTitle()->prepend(__('Vehicle Model'));
 
-         return $resultPage;
+        return $resultPage;
     }
 
 }

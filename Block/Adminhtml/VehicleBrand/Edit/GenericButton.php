@@ -1,7 +1,8 @@
 <?php
 namespace Curso\Vehicle\Block\Adminhtml\VehicleBrand\Edit;
-use Curso\Vehicle\Api\VehicleBrandRepositoryInterface;
+
 use Magento\Backend\Block\Widget\Context;
+use Curso\Vehicle\Api\VehicleBrandRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 class GenericButton

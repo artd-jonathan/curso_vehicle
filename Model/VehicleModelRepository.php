@@ -1,5 +1,6 @@
 <?php
 namespace Curso\Vehicle\Model;
+
 use Curso\Vehicle\Api\Data;
 use Curso\Vehicle\Api\VehicleModelRepositoryInterface;
 use Magento\Framework\Api\DataObjectHelper;
@@ -11,7 +12,7 @@ use Curso\Vehicle\Model\ResourceModel\VehicleModel as ResourceVehicleModel;
 use Curso\Vehicle\Model\ResourceModel\VehicleModel\CollectionFactory as VehicleModelCollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
-class VehicleModellRepository implements VehicleModelRepositoryInterface
+class VehicleModelRepository implements VehicleModelRepositoryInterface
 {
     protected $resource;
     protected $vehicleModelFactory;
@@ -42,7 +43,7 @@ class VehicleModellRepository implements VehicleModelRepositoryInterface
             $vehicleMode->setStoreId($storeId);
         }
         try {
-            $vehicleMode->getResource()->save($vehicleMode);
+            $resource->save($vehicleMode);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the vehicleMode: %1',
@@ -54,7 +55,7 @@ class VehicleModellRepository implements VehicleModelRepositoryInterface
     public function getById($vehicleModeId)
     {
         $vehicleMode = $this->vehicleModeFactory->create();
-        $vehicleMode->getResource()->load($vehicleMode, $vehicleModeId);
+        $vehicleMode->load($vehicleModeId);
         if (!$vehicleMode->getId()) {
             throw new NoSuchEntityException(__('VehicleModel with id "%1" does not exist.', $vehicleModeId));
         }
@@ -63,7 +64,7 @@ class VehicleModellRepository implements VehicleModelRepositoryInterface
     public function delete(\Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleMode)
     {
         try {
-            $vehicleMode->getResource()->delete($vehicleMode);
+            $this->resource()->delete($vehicleMode);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
                 'Could not delete the VehicleModel: %1',

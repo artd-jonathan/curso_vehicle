@@ -1,5 +1,6 @@
 <?php
 namespace Curso\Vehicle\Model;
+
 use Curso\Vehicle\Api\Data;
 use Curso\Vehicle\Api\VehicleBrandRepositoryInterface;
 use Magento\Framework\Api\DataObjectHelper;
@@ -42,7 +43,7 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
             $vehicleBrand->setStoreId($storeId);
         }
         try {
-            $vehicleBrand->getResource()->save($vehicleBrand);
+            $this->resource->save($vehicleBrand);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the vehicleBrand: %1',
@@ -54,7 +55,7 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
     public function getById($vehicleBrandId)
     {
         $vehicleBrand = $this->vehicleBrandFactory->create();
-        $vehicleBrand->getResource()->load($vehicleBrand, $vehicleBrandId);
+        $vehicleBrand->load($vehicleBrandId);
         if (!$vehicleBrand->getId()) {
             throw new NoSuchEntityException(__('VehicleBrand with id "%1" does not exist.', $vehicleBrandId));
         }
@@ -63,7 +64,7 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
     public function delete(\Curso\Vehicle\Api\Data\VehicleBrandInterface $vehicleBrand)
     {
         try {
-            $vehicleBrand->getResource()->delete($vehicleBrand);
+            $this->resource()->delete($vehicleBrand);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
                 'Could not delete the VehicleBrand: %1',
@@ -74,15 +75,7 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
     }
     public function deleteById($vehicleBrandId)
     {
-        try {
-            return $this->delete($this->getById($vehicleBrandId));
-        } catch (\Exception $exception) {
-            throw new CouldNotDeleteException(__(
-                'Could not delete the VehicleBrand',
-                $exception->getMessage()
-            ));
-        }
-        
+        return $this->delete($this->getById($vehicleBrandId));
     }
 
 }

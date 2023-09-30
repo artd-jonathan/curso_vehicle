@@ -3,31 +3,32 @@ namespace Curso\Vehicle\Controller\Adminhtml\VehicleModel;
 
 class Delete extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Curso_Vehicle::model/delete';
-    const PAGE_TITLE = 'Page Title';
-
-    protected $_vehicleModelRepository;
-
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Curso\Vehicle\Api\VehicleModelRepositoryInterface $vehicleModelRepository
-    )
-    {
-        $this->_vehicleModelRepository = $vehicleModelRepository;
-        return parent::__construct($context);
-    }
-
+    /**
+     * Index action
+     *
+     * @return \Magento\Framework\View\Result\Page
+     */
     public function execute()
     {
-        $id = $this->getRequest()->getParam('vehicle_model_id');
-        try {
-            $this->_vehicleModelRepository->deleteById($id);
-            $this->messageManager->addSuccessMessage(__('You deleted the vehicle model.'));
-            $this->_dataPersistor->clear('vehicle_model');
-            return $this->resultRedirectFactory->create()->setPath('*/*/');
-        } catch (\Exception $e) {
-            $this->messageManager->addExceptionMessage($e, __('Something went wrong while deleting the vehicle model.'));
+        $id = $this->getRequest()->getParam('model_id');
+        
+        if ($id == null) {
+            $id = $this->getRequest()->getParam('vehicle_model_id');
         }
-        return $this->resultRedirectFactory->create()->setPath('*/*/edit', ['vehicle_model_id' => $id]);
+        $resultRedirect = $this->resultRedirectFactory->create();
+        if ($id) {
+            try {
+                $model = $this->_objectManager->create('Curso\Vehicle\Model\VehicleModel');
+                $model->load($id);
+                $model->delete();
+                $this->messageManager->addSuccess(__('The Vehicle Model has been deleted.'));
+                return $resultRedirect->setPath('*/*/');
+            } catch (\Exception $e) {
+                $this->messageManager->addError($e->getMessage());
+                return $resultRedirect->setPath('*/*/edit', ['model_id' => $id]);
+            }
+        }
+        $this->messageManager->addError(__('We can\'t find a Vehicle Model to delete.'));
+        return $resultRedirect->setPath('*/*/');
     }
 }

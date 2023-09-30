@@ -6,7 +6,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
     public function getButtonData()
     {
         $data = [];
-        if ($this->getBrandId()) {
+        if ($this->getVehicleBrandId()) {
             $data = [
                 'label' => __('Delete Brand'),
                 'class' => 'delete',
@@ -20,6 +20,6 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
     }
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/*/delete', ['brand_id' => $this->getBrandId()]);
+        return $this->getUrl('*/*/delete', ['brand_id' => $this->getVehicleBrandId()]);
     }
 }

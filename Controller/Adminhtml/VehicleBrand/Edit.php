@@ -22,8 +22,6 @@ class Edit extends \Magento\Backend\App\Action
     protected function _initAction()
     {
         $resultPage = $this->_resultPageFactory->create();
-        $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
-        $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
         $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
 
         return $resultPage;
@@ -36,8 +34,7 @@ class Edit extends \Magento\Backend\App\Action
     public function execute()
     {
         $vehicleBrandId = $this->getRequest()->getParam('vehicle_brand_id');
-        $model = $this->_objectManager->create('Curso\Vehicle\Model\VehicleBrand');
-
+        $model = $this->_objectManager->create(\Curso\Vehicle\Model\VehicleBrand::class);
         if ($vehicleBrandId) {
             $model->load($vehicleBrandId);
             if (!$model->getId()) {

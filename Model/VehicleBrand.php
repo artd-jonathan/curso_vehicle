@@ -25,7 +25,7 @@ class VehicleBrand extends AbstractModel implements IdentityInterface, VehicleBr
      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
      * @param array $data
      */
-    public function __construct() {
+    public function _construct() {
         $this->_init('Curso\Vehicle\Model\ResourceModel\VehicleBrand');
     }
 

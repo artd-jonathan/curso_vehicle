@@ -3,10 +3,6 @@ namespace Curso\Vehicle\Controller\Adminhtml\VehicleBrand;
 
 class Index extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = 'Curso_Vehicle::brand/index';
-
-    const PAGE_TITLE = 'Vehicle brands';
-
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
@@ -23,6 +19,7 @@ class Index extends \Magento\Backend\App\Action
        \Curso\Vehicle\Model\VehicleBrandFactory $vehicleBrandFactory
     )
     {
+        
         $this->_pageFactory = $pageFactory;
         $this->_vehicleBrandFactory = $vehicleBrandFactory;
         return parent::__construct($context);
@@ -37,9 +34,7 @@ class Index extends \Magento\Backend\App\Action
     {
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->_pageFactory->create();
-        $resultPage->setActiveMenu(static::ADMIN_RESOURCE);
-        $resultPage->addBreadcrumb(__(static::PAGE_TITLE), __(static::PAGE_TITLE));
-        $resultPage->getConfig()->getTitle()->prepend(__(static::PAGE_TITLE));
+        $resultPage->getConfig()->getTitle()->prepend(__('Vehicle Brand'));
 
         return $resultPage;
     }
