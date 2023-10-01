@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <!-- Vehicle Brand -->
-    <!-- <preference for="Curso\Vehicle\Api\Data\VehicleBrandInterface" type="Curso\Vehicle\Model\VehicleBrand" />
+    <preference for="Curso\Vehicle\Api\Data\VehicleBrandInterface" type="Curso\Vehicle\Model\VehicleBrand" />
 	<preference for="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" type="Curso\Vehicle\Model\VehicleBrandRepository" />
 	<virtualType name="VehicleBrandGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
         <arguments>
@@ -18,8 +18,8 @@
     <type name="Curso\Vehicle\Model\ResourceModel\VehicleBrand\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">vehicle_brand</argument>
-            <argument name="eventPrefix" xsi:type="string">vehiclevehiclebrand_news_grid_collection</argument>
-            <argument name="eventObject" xsi:type="string">vehiclevehiclebrand_news_collection</argument>
+            <argument name="eventPrefix" xsi:type="string">vehiclemodel_vehiclemodel_collection</argument>
+            <argument name="eventObject" xsi:type="string">vehiclemodel_collection</argument>
             <argument name="resourceModel" xsi:type="string">Curso\Curso\Model\ResourceModel\VehicleBrand</argument>
         </arguments>
     </type>
@@ -29,11 +29,11 @@
                 <item name="Curso\Vehicle\Api\Data\VehicleBrandInterface" xsi:type="string">Curso\Vehicle\Api\VehicleBrandRepositoryInterface</item>
             </argument>
         </arguments>
-    </type> -->
+    </type>
     <!-- Vehicle model -->
     <preference for="Curso\Vehicle\Api\Data\VehicleModelInterface" type="Curso\Vehicle\Model\VehicleModel" />
 	<preference for="Curso\Vehicle\Api\VehicleModelRepositoryInterface" type="Curso\Vehicle\Model\VehicleModelRepository" />
-	<virtualType name="VehicleModelGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+    <virtualType name="VehicleModelGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
         <arguments>
             <argument name="collection" xsi:type="object" shared="false">Curso\Vehicle\Model\ResourceModel\VehicleModel\Collection</argument>
         </arguments>
@@ -48,9 +48,9 @@
     <type name="Curso\Vehicle\Model\ResourceModel\VehicleModel\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">vehicle_model</argument>
-            <argument name="eventPrefix" xsi:type="string">vehiclevehiclemodel_news_grid_collection</argument>
-            <argument name="eventObject" xsi:type="string">vehiclevehiclemodel_news_collection</argument>
-            <argument name="resourceModel" xsi:type="string">Curso\Curso\Model\ResourceModel\VehicleModel</argument>
+            <argument name="eventPrefix" xsi:type="string">vehiclemodel_vehiclemodel_collection</argument>
+            <argument name="eventObject" xsi:type="string">vehiclemodel_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Curso\Vehicle\Model\ResourceModel\VehicleModel</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\Model\Entity\RepositoryFactory">

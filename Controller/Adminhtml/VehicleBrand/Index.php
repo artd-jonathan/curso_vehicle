@@ -8,20 +8,15 @@ class Index extends \Magento\Backend\App\Action
      */
     protected $_pageFactory;
 
-    protected $_vehicleBrandFactory;
-
     /**
      * @param \Magento\Backend\App\Action\Context $context
      */
     public function __construct(
        \Magento\Backend\App\Action\Context $context,
-       \Magento\Framework\View\Result\PageFactory $pageFactory,
-       \Curso\Vehicle\Model\VehicleBrandFactory $vehicleBrandFactory
+       \Magento\Framework\View\Result\PageFactory $pageFactory
     )
     {
-        
         $this->_pageFactory = $pageFactory;
-        $this->_vehicleBrandFactory = $vehicleBrandFactory;
         return parent::__construct($context);
     }
 

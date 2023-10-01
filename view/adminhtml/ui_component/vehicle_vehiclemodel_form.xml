@@ -68,5 +68,34 @@
                 <dataScope>model</dataScope>
             </settings>
         </field>
+        <!-- Crear un campo de tipo multiselect cuyo origen de datos se encuentra en Curso\Vehicle\Model\VehicleBrand\Source\Brand -->
+        <field name="vehicle_brand_id" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="label" xsi:type="string">Related Entity</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">vehiclemodel_form_data_source</item>
+                    <item name="dataScope" xsi:type="string">vehicle_brand_id</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>int</dataType>
+                <label translate="true">Related Entity</label>
+                <dataScope>vehicle_brand_id</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Curso\Vehicle\Model\VehicleBrand\Source\BrandOptions"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        
+        
     </fieldset>
 </form>

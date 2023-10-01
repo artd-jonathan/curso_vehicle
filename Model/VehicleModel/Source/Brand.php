@@ -1,31 +1,31 @@
 <?php
-namespace Curso\Vehicle\Model\VehicleBrand\Source;
+namespace Curso\Vehicle\Model\VehicleModel\Source;
 use Magento\Framework\Data\OptionSourceInterface;
 
-class Brand implements OptionSourceInterface
+class Model implements OptionSourceInterface
 {
 
-    protected $vehicleBrandFactory;
+    protected $vehicleModelFactory;
 
     /**
      * @param EavConfig $eavConfig
      */
     public function __construct(
         \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $collectionFactory,
-        \Curso\Vehicle\Model\VehicleBrandFactory $vehicleBrandFactory
+        \Curso\Vehicle\Model\VehicleModelFactory $vehicleModelFactory
     ) {
-        $this->vehicleBrandFactory = $vehicleBrandFactory;
+        $this->vehicleModelFactory = $vehicleModelFactory;
     }
 
     public function toOptionArray()
     {
         $optionArray = [];
-        $arr = $this->vehicleBrandFactory->create()->addAttributeToSelect('*');
+        $arr = $this->vehicleModelFactory->create()->addAttributeToSelect('*');
         
         foreach ($arr as $value => $label) {
                 $optionArray[] = [
                     'value' => $label->getId(),
-                    'label' => $label->getBrand(),
+                    'label' => $label->getModel(),
                 ];
         }
         return $optionArray;

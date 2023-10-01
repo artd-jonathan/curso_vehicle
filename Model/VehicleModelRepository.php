@@ -15,7 +15,7 @@ use Magento\Store\Model\StoreManagerInterface;
 class VehicleModelRepository implements VehicleModelRepositoryInterface
 {
     protected $resource;
-    protected $vehicleModelFactory;
+    protected $vehicleBrandFactory;
     protected $dataObjectHelper;
     protected $dataObjectProcessor;
     protected $dataVehicleModelFactory;
@@ -23,59 +23,59 @@ class VehicleModelRepository implements VehicleModelRepositoryInterface
 
     public function __construct(
         ResourceVehicleModel $resource,
-        VehicleModelFactory $vehicleModeFactory,
+        VehicleModelFactory $vehicleBrandFactory,
         Data\VehicleModelInterfaceFactory $dataVehicleModelFactory,
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor,
         StoreManagerInterface $storeManager
     ) {
         $this->resource = $resource;
-        $this->vehicleModeFactory = $vehicleModeFactory;
+        $this->vehicleBrandFactory = $vehicleBrandFactory;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->dataVehicleModelFactory = $dataVehicleModelFactory;
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->storeManager = $storeManager;
     }
-    public function save(\Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleMode)
+    public function save(\Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleBrand)
     {
-        if ($vehicleMode->getStoreId() === null) {
+        if ($vehicleBrand->getStoreId() === null) {
             $storeId = $this->storeManager->getStore()->getId();
-            $vehicleMode->setStoreId($storeId);
+            $vehicleBrand->setStoreId($storeId);
         }
         try {
-            $resource->save($vehicleMode);
+            $this->resource->save($vehicleBrand);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
-                'Could not save the vehicleMode: %1',
+                'Could not save the vehicle Model: %1',
                 $exception->getMessage()
             ));
         }
-        return $vehicleMode;
+        return $vehicleBrand;
     }
-    public function getById($vehicleModeId)
+    public function getById($vehicleBrandId)
     {
-        $vehicleMode = $this->vehicleModeFactory->create();
-        $vehicleMode->load($vehicleModeId);
-        if (!$vehicleMode->getId()) {
-            throw new NoSuchEntityException(__('VehicleModel with id "%1" does not exist.', $vehicleModeId));
+        $vehicleBrand = $this->vehicleBrandFactory->create();
+        $vehicleBrand->load($vehicleBrandId);
+        if (!$vehicleBrand->getId()) {
+            throw new NoSuchEntityException(__('Vehicle Model with id "%1" does not exist.', $vehicleBrandId));
         }
-        return $vehicleMode;
+        return $vehicleBrand;
     }
-    public function delete(\Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleMode)
+    public function delete(\Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleBrand)
     {
         try {
-            $this->resource()->delete($vehicleMode);
+            $this->resource()->delete($vehicleBrand);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
-                'Could not delete the VehicleModel: %1',
+                'Could not delete the Vehicle Model: %1',
                 $exception->getMessage()
             ));
         }
         return true;
     }
-    public function deleteById($vehicleModeId)
+    public function deleteById($vehicleBrandId)
     {
-        return $this->delete($this->getById($vehicleModeId));
+        return $this->delete($this->getById($vehicleBrandId));
     }
-    
+
 }

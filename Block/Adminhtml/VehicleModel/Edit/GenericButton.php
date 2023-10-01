@@ -8,20 +8,20 @@ use Magento\Framework\Exception\NoSuchEntityException;
 class GenericButton
 {
     protected $context;
-    protected $vehicleModelRepository;
+    protected $VehicleModelRepository;
     
     public function __construct(
         Context $context,
-        VehicleModelRepositoryInterface $vehicleModelRepository
+        VehicleModelRepositoryInterface $VehicleModelRepository
     ) {
         $this->context = $context;
-        $this->vehicleModelRepository = $vehicleModelRepository;
+        $this->VehicleModelRepository = $VehicleModelRepository;
     }
 
     public function getVehicleModelId()
     {
         try {
-            return $this->vehicleModelRepository->getById(
+            return $this->VehicleModelRepository->getById(
                 $this->context->getRequest()->getParam('vehicle_model_id')
             )->getId();
         }

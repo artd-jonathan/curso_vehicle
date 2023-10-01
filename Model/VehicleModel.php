@@ -17,7 +17,7 @@ class VehicleModel extends AbstractModel implements IdentityInterface, VehicleMo
      */
     protected $_cacheTag = self::CACHE_TAG;
 
-    
+
     /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -25,10 +25,11 @@ class VehicleModel extends AbstractModel implements IdentityInterface, VehicleMo
      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
      * @param array $data
      */
-    public function __construct() {
+    public function _construct() {
         $this->_init('Curso\Vehicle\Model\ResourceModel\VehicleModel');
     }
 
+    
     /**
      * Return a unique id for the model.
      *
@@ -46,19 +47,22 @@ class VehicleModel extends AbstractModel implements IdentityInterface, VehicleMo
     public function getId(){
         return $this->getData(self::VEHICLE_MODEL_ID);
     }
-    public function getModel(){
-        return $this->getData(self::MODEL);
-    }
-    public function getBrandId(){
-        return $this->getData(self::BRAND_ID);
-    }
     public function setId($id){
         return $this->setData(self::VEHICLE_MODEL_ID, $id);
     }
-    public function setModel($model){
-        return $this->setData(self::MODEL, $model);
+
+    public function getBrandId(){
+        return $this->getData(self::BRAND_ID);
     }
     public function setBrandId($brandId){
         return $this->setData(self::BRAND_ID, $brandId);
     }
+
+    public function getModel(){
+        return $this->getData(self::MODEL);
+    }
+    public function setModel($model){
+        return $this->setData(self::MODEL, $model);
+    }
+    
 }

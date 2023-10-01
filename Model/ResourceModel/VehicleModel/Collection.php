@@ -8,7 +8,7 @@ class Collection extends AbstractCollection
     protected $_idFieldName = 'vehicle_model_id';
 	protected $_eventPrefix = 'vehiclemodel_vehiclemodel_collection';
     protected $_eventObject = 'vehiclemodel_collection';
-	
+
 	/**
      * Define model & resource model
      */
@@ -19,7 +19,6 @@ class Collection extends AbstractCollection
 			'Curso\Vehicle\Model\ResourceModel\VehicleModel'
 		);
 	}
-	//create a_initSelect method to join the vehicle_brand table getting the following colums: model, vehicle_model_id and brand
 	protected function _initSelect()
 	{
 		parent::_initSelect();

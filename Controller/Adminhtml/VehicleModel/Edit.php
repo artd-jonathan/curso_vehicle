@@ -3,6 +3,7 @@ namespace Curso\Vehicle\Controller\Adminhtml\VehicleModel;
 
 class Edit extends \Magento\Backend\App\Action
 {
+    const ADMIN_RESOURCE = 'Curso_Vehicle::vehiclemodel';
     const PAGE_TITLE = 'Vehicle Model';
 
     protected $_coreRegistry;
@@ -32,30 +33,28 @@ class Edit extends \Magento\Backend\App\Action
      */
     public function execute()
     {
-        
-        $vehicleModelId = $this->getRequest()->getParam('vehicle_model_id');
+        $VehicleModelId = $this->getRequest()->getParam('vehicle_model_id');
         $model = $this->_objectManager->create(\Curso\Vehicle\Model\VehicleModel::class);
-        
-        if ($vehicleModelId) {
-            $model->load($vehicleModelId);
+        if ($VehicleModelId) {
+            $model->load($VehicleModelId);
             if (!$model->getId()) {
                 $this->messageManager->addError(__('This Vehicle Model no longer exists.'));
                 $resultRedirect = $this->resultRedirectFactory->create();
                 return $resultRedirect->setPath('*/*/');
             }
         }
+
         $this->_coreRegistry->register('vehicle_model', $model);
-        // print_r(json_encode($this->getRequest()));
-        // die();
+
         $resultPage = $this->_initAction();
-        
         $resultPage->addBreadcrumb(
-            $vehicleModelId ? __('Edit Vehicle Model') : __('New Vehicle Model'),
-            $vehicleModelId ? __('Edit Vehicle Model') : __('New Vehicle Model')
+            $VehicleModelId ? __('Edit Vehicle Model') : __('New Vehicle Model'),
+            $VehicleModelId ? __('Edit Vehicle Model') : __('New Vehicle Model')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Vehicle Model'));
         $resultPage->getConfig()->getTitle()
             ->prepend($model->getId() ? $model->getName() : __('New Vehicle Model'));
+
         return $resultPage;
     
     }

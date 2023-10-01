@@ -32,6 +32,10 @@ class Index extends \Magento\Backend\App\Action
      */
     public function execute()
     {
+        // $vehicleBrand = $this->_vehicleModelFactory->create();
+		// $vehicleBrandCollection = $vehicleBrand->getCollection();
+		
+		// echo '<pre>';print_r($vehicleBrandCollection->getData());
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->_pageFactory->create();
         $resultPage->getConfig()->getTitle()->prepend(__('Vehicle Model'));

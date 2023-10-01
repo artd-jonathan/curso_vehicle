@@ -95,13 +95,6 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="brand">
-            <settings>
-                <filter>textRange</filter>
-                <label translate="true">Brand</label>
-                <sorting>asc</sorting>
-            </settings>
-        </column>
         <column name="model">
             <settings>
                 <filter>text</filter>
@@ -111,7 +104,19 @@
                     </validation>
                     <editorType>text</editorType>
                 </editor>
-                <label translate="true">Model</label>
+                <label translate="true">Model</label>   
+            </settings>
+        </column>
+        <column name="brand">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Brand</label>   
             </settings>
         </column>
 		<actionsColumn name="actions" class="Curso\Vehicle\Ui\Component\Listing\Column\VehicleModelActions">
