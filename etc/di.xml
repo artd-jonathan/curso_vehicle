@@ -60,7 +60,7 @@
             </argument>
         </arguments>
     </type>
-    <!-- Vehicle Vwhicle -->
+    <!-- Vehicle Vehicle -->
     <preference for="Curso\Vehicle\Api\Data\VehicleVehicleInterface" type="Curso\Vehicle\Model\VehicleVehicle" />
 	<preference for="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" type="Curso\Vehicle\Model\VehicleVehicleRepository" />
 	<virtualType name="VehicleVehicleGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">

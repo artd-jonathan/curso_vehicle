@@ -36,6 +36,13 @@ class VehicleModelRepository implements VehicleModelRepositoryInterface
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->storeManager = $storeManager;
     }
+    /**
+     * Save VehicleModel data
+     *
+     * @param \Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleBrand
+     * @return VehicleModel
+     * @throws CouldNotSaveException
+     */
     public function save(\Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleBrand)
     {
         if ($vehicleBrand->getStoreId() === null) {
@@ -52,6 +59,13 @@ class VehicleModelRepository implements VehicleModelRepositoryInterface
         }
         return $vehicleBrand;
     }
+    /**
+     * Load VehicleModel data by given VehicleModel Identity
+     *
+     * @param string $vehicleBrandId
+     * @return VehicleModel
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getById($vehicleBrandId)
     {
         $vehicleBrand = $this->vehicleBrandFactory->create();
@@ -61,6 +75,12 @@ class VehicleModelRepository implements VehicleModelRepositoryInterface
         }
         return $vehicleBrand;
     }
+    /**
+     * Load VehicleModel data collection by given search criteria
+     *
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $criteria
+     * @return \Magento\Framework\Api\SearchResultsInterface
+     */
     public function delete(\Curso\Vehicle\Api\Data\VehicleModelInterface $vehicleBrand)
     {
         try {
@@ -73,6 +93,14 @@ class VehicleModelRepository implements VehicleModelRepositoryInterface
         }
         return true;
     }
+    /**
+     * Delete VehicleModel by given VehicleModel Identity
+     *
+     * @param string $vehicleBrandId
+     * @return bool
+     * @throws CouldNotDeleteException
+     * @throws NoSuchEntityException
+     */
     public function deleteById($vehicleBrandId)
     {
         return $this->delete($this->getById($vehicleBrandId));

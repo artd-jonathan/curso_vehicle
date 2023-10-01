@@ -36,6 +36,13 @@ class VehicleVehicleRepository implements VehicleVehicleRepositoryInterface
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->storeManager = $storeManager;
     }
+    /**
+     * Save VehicleVehicle data
+     *
+     * @param \Curso\Vehicle\Api\Data\VehicleVehicleInterface $vehicleBrand
+     * @return VehicleVehicle
+     * @throws CouldNotSaveException
+     */
     public function save(\Curso\Vehicle\Api\Data\VehicleVehicleInterface $vehicleBrand)
     {
         if ($vehicleBrand->getStoreId() === null) {
@@ -52,6 +59,13 @@ class VehicleVehicleRepository implements VehicleVehicleRepositoryInterface
         }
         return $vehicleBrand;
     }
+    /**
+     * Load VehicleVehicle data by given VehicleVehicle Identity
+     *
+     * @param string $vehicleBrandId
+     * @return VehicleVehicle
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getById($vehicleBrandId)
     {
         $vehicleBrand = $this->vehicleBrandFactory->create();
@@ -61,6 +75,12 @@ class VehicleVehicleRepository implements VehicleVehicleRepositoryInterface
         }
         return $vehicleBrand;
     }
+    /**
+     * Load VehicleVehicle data collection by given search criteria
+     *
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $criteria
+     * @return \Curso\Vehicle\Model\ResourceModel\VehicleVehicle\Collection
+     */
     public function delete(\Curso\Vehicle\Api\Data\VehicleVehicleInterface $vehicleBrand)
     {
         try {
@@ -73,6 +93,12 @@ class VehicleVehicleRepository implements VehicleVehicleRepositoryInterface
         }
         return true;
     }
+    /**
+     * Load VehicleVehicle data collection by given search criteria
+     *
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $criteria
+     * @return \Curso\Vehicle\Model\ResourceModel\VehicleVehicle\Collection
+     */
     public function deleteById($vehicleBrandId)
     {
         return $this->delete($this->getById($vehicleBrandId));

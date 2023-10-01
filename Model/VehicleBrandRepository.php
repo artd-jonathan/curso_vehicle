@@ -11,6 +11,8 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 use Curso\Vehicle\Model\ResourceModel\VehicleBrand as ResourceVehicleBrand;
 use Curso\Vehicle\Model\ResourceModel\VehicleBrand\CollectionFactory as VehicleBrandCollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
+
 
 class VehicleBrandRepository implements VehicleBrandRepositoryInterface
 {
@@ -36,6 +38,13 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->storeManager = $storeManager;
     }
+    /**
+     * Save VehicleBrand data
+     *
+     * @param \Curso\Vehicle\Api\Data\VehicleBrandInterface $vehicleBrand
+     * @return VehicleBrand
+     * @throws CouldNotSaveException
+     */
     public function save(\Curso\Vehicle\Api\Data\VehicleBrandInterface $vehicleBrand)
     {
         if ($vehicleBrand->getStoreId() === null) {
@@ -52,6 +61,13 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
         }
         return $vehicleBrand;
     }
+    /**
+     * Load VehicleBrand data by given VehicleBrand Identity
+     *
+     * @param string $vehicleBrandId
+     * @return VehicleBrand
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
     public function getById($vehicleBrandId)
     {
         $vehicleBrand = $this->vehicleBrandFactory->create();
@@ -61,6 +77,13 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
         }
         return $vehicleBrand;
     }
+    /**
+     * Delete VehicleBrand
+     *
+     * @param \Curso\Vehicle\Api\Data\VehicleBrandInterface $vehicleBrand
+     * @return bool
+     * @throws CouldNotDeleteException
+     */
     public function delete(\Curso\Vehicle\Api\Data\VehicleBrandInterface $vehicleBrand)
     {
         try {
@@ -73,9 +96,16 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
         }
         return true;
     }
+    /**
+     * Delete VehicleBrand by given VehicleBrand Identity
+     *
+     * @param string $vehicleBrandId
+     * @return bool
+     * @throws CouldNotDeleteException
+     * @throws NoSuchEntityException
+     */
     public function deleteById($vehicleBrandId)
     {
         return $this->delete($this->getById($vehicleBrandId));
     }
-
 }
