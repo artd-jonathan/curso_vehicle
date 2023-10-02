@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Curso_Vehicle::brand" title="Vehicle - brand" translate="title" sortOrder="110">
+                    <resource id="Curso_Vehicle::brand_getById" title="Get brand by ID" translate="title" sortOrder="10" />
+                    <resource id="Curso_Vehicle::brand_save" title="Save brand" translate="title" sortOrder="20" />
+                    <resource id="Curso_Vehicle::brand_delete_by_id_save" title="Delete brand by ID" translate="title" sortOrder="20" />
+                    <resource id="Curso_Vehicle::brand_delete_save" title="Delete brand" translate="title" sortOrder="20" />
+                </resource>
+                <resource id="Curso_Vehicle::model" title="Vehicle - model" translate="title" sortOrder="110">
+                    <resource id="Curso_Vehicle::model_getById" title="Get model by ID" translate="title" sortOrder="10" />
+                    <resource id="Curso_Vehicle::model_save" title="Save model" translate="title" sortOrder="20" />
+                    <resource id="Curso_Vehicle::model_delete_by_id_save" title="Delete model by ID" translate="title" sortOrder="20" />
+                    <resource id="Curso_Vehicle::model_delete_save" title="Delete model" translate="title" sortOrder="20" />
+                </resource>
+                <resource id="Curso_Vehicle::vehicle" title="Vehicle - vehicle" translate="title" sortOrder="110">
+                    <resource id="Curso_Vehicle::vehicle_getById" title="Get vehicle by ID" translate="title" sortOrder="10" />
+                    <resource id="Curso_Vehicle::vehicle_save" title="Save vehicle" translate="title" sortOrder="20" />
+                    <resource id="Curso_Vehicle::vehicle_delete_by_id_save" title="Delete vehicle by ID" translate="title" sortOrder="20" />
+                    <resource id="Curso_Vehicle::vehicle_delete_save" title="Delete vehicle" translate="title" sortOrder="20" />
+                </resource>
+            </resource>    
+        </resources>
+    </acl>
+</config>
