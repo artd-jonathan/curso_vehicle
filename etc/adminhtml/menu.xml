@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<add id="Curso_Vehicle::vehicle" title="Vehicle" translate="title" module="Curso_Vehicle" sortOrder="10" dependsOnModule="Curso_Vehicle" resource="Curso_Vehicle::vehicle"/>
+		<add id="Curso_Vehicle::vehicle" title="Vehicle" translate="title" module="Curso_Vehicle" sortOrder="1" dependsOnModule="Curso_Vehicle" resource="Curso_Vehicle::vehicle"/>
 	  	<add id="Curso_Vehicle::vehicle_index" title="Vehicle" translate="title" module="Curso_Vehicle" parent="Curso_Vehicle::vehicle" sortOrder="50" dependsOnModule="Curso_Vehicle" resource="Curso_Vehicle::vehicle_index"/>
 		<add id="Curso_Vehicle::vehicle_brands" title="All brands" translate="title" module="Curso_Vehicle" parent="Curso_Vehicle::vehicle_index" sortOrder="10" dependsOnModule="Curso_Vehicle" action="vehicle/vehiclebrand/index" resource="Curso_Vehicle::vehicle_brands"/>
 		<add id="Curso_Vehicle::vehicle_models" title="All models" translate="title" module="Curso_Vehicle" parent="Curso_Vehicle::vehicle_index" sortOrder="10" dependsOnModule="Curso_Vehicle" action="vehicle/vehiclemodel/index" resource="Curso_Vehicle::vehicle_models"/>

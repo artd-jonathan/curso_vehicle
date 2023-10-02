@@ -16,6 +16,21 @@ class Index extends \Magento\Framework\App\Action\Action
 
 	public function execute()
 	{
-        return $this->_pageFactory->create();
+		try {
+			$resource = $this->_objectManager->create('Magento\Framework\App\ResourceConnection');
+			$connection = $resource->getConnection();
+
+			$tableName = $resource->getTableName('vehicle_vehicle');
+			$select = $connection->select()
+				->from(['vehicle_vehicle' => $tableName])
+				->columns(['*']);
+
+			$result = $connection->fetchAll($select);
+			echo '<pre>';print_r($result);
+		} catch (Exception $e) {
+			print_r($e->getMessage());
+		}
+		
+        // return $this->_pageFactory->create();
 	}
 }

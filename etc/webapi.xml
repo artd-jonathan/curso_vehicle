@@ -2,79 +2,79 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <!-- Brand endpoints -->
-    <route url="/V1/vehicle/brand/:id" method="GET">
-        <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="getById"/>
-        <resources>
-            <resource ref="Curso_Vehicle::brand_getById"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/brand/" method="POST">
-        <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="save"/>
-        <resources>
-            <resource ref="Curso_Vehicle::brand_save"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/brand/" method="DELETE">
-        <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="delete"/>
-        <resources>
-            <resource ref="Curso_Vehicle::brand_delete"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/brand/:id" method="DELETE">
-        <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="deleteById"/>
-        <resources>
-            <resource ref="Curso_Vehicle::brand_deleteById"/>
-        </resources>
-    </route>
-    <!-- Model endpoints -->
-    <route url="/V1/vehicle/model/:id" method="GET">
-        <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="getById"/>
-        <resources>
-            <resource ref="Curso_Vehicle::model_getById"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/model/:id" method="POST">
-        <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="save"/>
-        <resources>
-            <resource ref="Curso_Vehicle::model_save"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/model/" method="DELETE">
-        <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="delete"/>
-        <resources>
-            <resource ref="Curso_Vehicle::model_delete"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/model/:id" method="DELETE">
-        <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="deleteById"/>
-        <resources>
-            <resource ref="Curso_Vehicle::model_deleteById"/>
-        </resources>
-    </route>
-    <!-- Vehicle endpoints -->
-    <route url="/V1/vehicle/vehicle/:id" method="GET">
-        <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="getById"/>
-        <resources>
-            <resource ref="Curso_Vehicle::vehicle_getById"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/vehicle/:id" method="POST">
-        <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="save"/>
-        <resources>
-            <resource ref="Curso_Vehicle::vehicle_save"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/vehicle/:id" method="DELETE">
-        <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="deleteById"/>
-        <resources>
-            <resource ref="Curso_Vehicle::vehicle_deleteById"/>
-        </resources>
-    </route>
-    <route url="/V1/vehicle/vehicle/" method="DELETE">
-        <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="delete"/>
-        <resources>
-            <resource ref="Curso_Vehicle::vehicle_delete"/>
-        </resources>
-    </route>
+        <route url="/V1/vehicle/brand/:id" method="GET">
+            <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="getById"/>
+            <resources>
+                <resource ref="Curso_Vehicle::brand_getById"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/brand/" method="POST">
+            <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="save"/>
+            <resources>
+                <resource ref="Curso_Vehicle::brand_save"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/brand/" method="DELETE">
+            <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="delete"/>
+            <resources>
+                <resource ref="Curso_Vehicle::brand_delete"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/brand/:id" method="DELETE">
+            <service class="Curso\Vehicle\Api\VehicleBrandRepositoryInterface" method="deleteById"/>
+            <resources>
+                <resource ref="Curso_Vehicle::brand_deleteById"/>
+            </resources>
+        </route>
+        <!-- Model endpoints -->
+        <route url="/V1/vehicle/model/:id" method="GET">
+            <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="getById"/>
+            <resources>
+                <resource ref="Curso_Vehicle::model_getById"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/model/:id" method="POST">
+            <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="save"/>
+            <resources>
+                <resource ref="Curso_Vehicle::model_save"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/model/" method="DELETE">
+            <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="delete"/>
+            <resources>
+                <resource ref="Curso_Vehicle::model_delete"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/model/:id" method="DELETE">
+            <service class="Curso\Vehicle\Api\VehicleModelRepositoryInterface" method="deleteById"/>
+            <resources>
+                <resource ref="Curso_Vehicle::model_deleteById"/>
+            </resources>
+        </route>
+        <!-- Vehicle endpoints -->
+        <route url="/V1/vehicle/vehicle/:id" method="GET">
+            <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="getById"/>
+            <resources>
+                <resource ref="Curso_Vehicle::vehicle_getById"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/vehicle/:id" method="POST">
+            <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="save"/>
+            <resources>
+                <resource ref="Curso_Vehicle::vehicle_save"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/vehicle/:id" method="DELETE">
+            <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="deleteById"/>
+            <resources>
+                <resource ref="Curso_Vehicle::vehicle_deleteById"/>
+            </resources>
+        </route>
+        <route url="/V1/vehicle/vehicle/" method="DELETE">
+            <service class="Curso\Vehicle\Api\VehicleVehicleRepositoryInterface" method="delete"/>
+            <resources>
+                <resource ref="Curso_Vehicle::vehicle_delete"/>
+            </resources>
+        </route>
 
 </routes>

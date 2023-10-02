@@ -23,7 +23,8 @@ class Collection extends AbstractCollection
 	{
 		//Create a join between the vehicle_vehicle table, the vehicle_model and the vehicle_brand tables
 		parent::_initSelect();
-		$this->getSelect()->joinLeft(
+		$this->getSelect()
+		->joinLeft(
 			['secondTable' => $this->getTable('vehicle_model')],
 			'main_table.vehicle_model_id = secondTable.vehicle_model_id',
 			['model']
@@ -31,6 +32,7 @@ class Collection extends AbstractCollection
 			['thirdTable' => $this->getTable('vehicle_brand')],
 			'secondTable.vehicle_brand_id = thirdTable.vehicle_brand_id',
 			['brand']
-		)->columns('plate');
+		)->columns('plate')
+		->group('main_table.vehicle_vehicle_id');
 	}
 }

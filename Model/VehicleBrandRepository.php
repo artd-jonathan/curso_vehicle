@@ -108,4 +108,17 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
     {
         return $this->delete($this->getById($vehicleBrandId));
     }
+
+    public function getList(SearchCriteriaInterface $criteria)
+    {
+
+        $orderCollection = $this->_orderCollectionFactory->create();
+        $orderCollection->getSelect()->join(
+            ['customer_table' => $orderCollection->getTable('customer_entity')],
+            'main_table.customer_id = customer_table.entity_id',
+            ['customer_name' => 'customer_table.firstname']
+        );
+
+
+    }
 }
