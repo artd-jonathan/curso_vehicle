@@ -21,9 +21,18 @@ class Index extends \Magento\Framework\App\Action\Action
 			$connection = $resource->getConnection();
 
 			$tableName = $resource->getTableName('vehicle_vehicle');
+			
 			$select = $connection->select()
-				->from(['vehicle_vehicle' => $tableName])
-				->columns(['*']);
+				->from(
+					['vehicle_vehicle' => $tableName],
+					["secondTable.model", "count(vehicle_vehicle.vehicle_model_id) as total", "sum(secondTable.vehicle_model_id)"]
+				)
+				->joinLeft(
+					['secondTable' => $resource->getTableName('vehicle_model')],
+					'vehicle_vehicle.vehicle_model_id = secondTable.vehicle_model_id',
+					['model']
+				)
+				->group('secondTable.model');
 
 			$result = $connection->fetchAll($select);
 			echo '<pre>';print_r($result);
