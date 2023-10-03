@@ -32,7 +32,6 @@ class Collection extends AbstractCollection
 			['thirdTable' => $this->getTable('vehicle_brand')],
 			'secondTable.vehicle_brand_id = thirdTable.vehicle_brand_id',
 			['brand']
-		)->columns('plate')
-		->group('main_table.vehicle_vehicle_id');
+		)->columns('plate');
 	}
 }

@@ -56,7 +56,7 @@ class VehicleBrandRepository implements VehicleBrandRepositoryInterface
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the vehicleBrand: %1',
-                $exception->getMessage()
+                "error"
             ));
         }
         return $vehicleBrand;

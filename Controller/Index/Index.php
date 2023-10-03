@@ -16,30 +16,30 @@ class Index extends \Magento\Framework\App\Action\Action
 
 	public function execute()
 	{
-		try {
-			$resource = $this->_objectManager->create('Magento\Framework\App\ResourceConnection');
-			$connection = $resource->getConnection();
+		// try {
+		// 	$resource = $this->_objectManager->create('Magento\Framework\App\ResourceConnection');
+		// 	$connection = $resource->getConnection();
 
-			$tableName = $resource->getTableName('vehicle_vehicle');
+		// 	$tableName = $resource->getTableName('vehicle_vehicle');
 			
-			$select = $connection->select()
-				->from(
-					['vehicle_vehicle' => $tableName],
-					["secondTable.model", "count(vehicle_vehicle.vehicle_model_id) as total", "sum(secondTable.vehicle_model_id)"]
-				)
-				->joinLeft(
-					['secondTable' => $resource->getTableName('vehicle_model')],
-					'vehicle_vehicle.vehicle_model_id = secondTable.vehicle_model_id',
-					['model']
-				)
-				->group('secondTable.model');
+		// 	$select = $connection->select()
+		// 		->from(
+		// 			['vehicle_vehicle' => $tableName],
+		// 			["secondTable.model", "count(vehicle_vehicle.vehicle_model_id) as total", "sum(secondTable.vehicle_model_id)"]
+		// 		)
+		// 		->joinLeft(
+		// 			['secondTable' => $resource->getTableName('vehicle_model')],
+		// 			'vehicle_vehicle.vehicle_model_id = secondTable.vehicle_model_id',
+		// 			['model']
+		// 		)
+		// 		->group('secondTable.model');
 
-			$result = $connection->fetchAll($select);
-			echo '<pre>';print_r($result);
-		} catch (Exception $e) {
-			print_r($e->getMessage());
-		}
+		// 	$result = $connection->fetchAll($select);
+		// 	echo '<pre>';print_r($result);
+		// } catch (Exception $e) {
+		// 	print_r($e->getMessage());
+		// }
 		
-        // return $this->_pageFactory->create();
+        return $this->_pageFactory->create();
 	}
 }

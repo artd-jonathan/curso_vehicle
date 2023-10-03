@@ -1,0 +1,22 @@
+<?php
+/** @var \Curso\Vehicle\Block\Frontend\Vehicle $block */
+?>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <!-- Agrega más columnas según tus necesidades -->
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->getvehicleBrandCollection() as $brand): ?>
+            <tr>
+                <td><?= $brand->getId() ?></td>
+                <td><?= $brand->getBrand() ?></td>
+                <!-- Agrega más columnas según tus necesidades -->
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

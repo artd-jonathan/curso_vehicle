@@ -14,13 +14,7 @@ interface VehicleVehicleInterface
      * @return int|null
      */
     public function getId();
-    /*
-    Set ID
-     *
-     * @param int $id
-     * @return $this
-     */
-    public function setId($id);
+    
 
     /**
      * Get plate
